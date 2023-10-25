@@ -14,7 +14,10 @@ services:
       - 80:80
       - 443:443
     volumes:
+      - caddy_data:/data
       - ./Caddyfile:/etc/caddy/Caddyfile
     restart: unless-stopped
 volumes:
   portainer_data:
+  caddy_data:
+  
