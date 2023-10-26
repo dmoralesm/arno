@@ -1,7 +1,7 @@
 #!/bin/bash
 
 git pull
-git checkout Caddyfile
+cp -rf Caddy.sample Caddyfile
 sed -i "s/<domain>/$DOMAIN/g" Caddyfile
-docker compose build
-docker compose up -d
+sudo docker compose build
+sudo docker compose up -d
