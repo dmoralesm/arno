@@ -1,0 +1,5 @@
+portainer.<domain> {
+	reverse_proxy portainer:9000 {
+		flush_interval -1
+	}
+}
