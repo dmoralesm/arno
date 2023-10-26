@@ -2,19 +2,28 @@ version: "3"
 services:
   portainer:
     image: portainer/portainer-ce:latest
+    restart: always
     volumes:
       - portainer_data:/data
       - /var/run/docker.sock:/var/run/docker.sock
-    restart: always
   caddy:
     image: caddy:latest
+    restart: always
     ports:
       - 80:80
       - 443:443
     volumes:
       - caddy_data:/data
       - ./Caddyfile:/etc/caddy/Caddyfile
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
     restart: always
+    volumes:
+      - n8n_data:/home/node/.n8n
+    env_file:
+      - n8n.env
+
 volumes:
   portainer_data:
   caddy_data:
+  n8n_data:
